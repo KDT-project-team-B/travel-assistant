@@ -1,0 +1,69 @@
+{% load static %}
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style type="text/css"> 
+     a{ 
+           text-decoration:none;
+           color : black;
+           font-size: 80px;
+        } 
+     .navbar-login{
+           position: absolute;
+           top: 8px;
+           right: 16px;
+           font-size: 18px;
+            }
+     .second-line{
+           font-size: 25px;
+       }
+    </style> 
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Hello, pybo!</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+   <center> 
+    <a class="navbar-main" href="{% url 'mainapp:index' %}">여긴 어때</a>
+   </center>
+    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
+    <br>
+       <center>
+        <a class="second-line" href="{% url 'aboutusapp:index' %}">About Us</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="#">Travel</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="#">Review</a>
+      </center>
+    </div>
+</nav>
+<div class="container my-3">
+   <div class="row">
+        <div class="col-4">
+            <h4>로그인</h4>
+        </div>
+    </div>
+    <form method="post" class="post-form" action="{% url 'logioapp:login' %}">
+        {% csrf_token %}
+        {% include "logioapp/form_errors.html" %}
+        <div class="form-group">
+            <label for="username">사용자ID</label>
+            <input type="text" class="form-control" name="username" id="username"
+                   value="{{ form.username.value|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호</label>
+            <input type="password" class="form-control" name="password" id="password"
+                   value="{{ form.password.value|default_if_none:'' }}">
+        </div>
+        <button type="submit" class="btn btn-primary">로그인</button>
+        <span>
+        <a href="{% url 'logioapp:signup' %}">회원가입</a>
+        </span>
+    </form>
+</div>
+</body>
+</html>
