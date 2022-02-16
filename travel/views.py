@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from .models import Post
@@ -12,7 +12,10 @@ def review(request):
     return render(request, 'travel/review.html', {'postlist':postlist})
 
 def posting(request, pk):
-    post = Post.objects.get(pk=pk)
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        raise Http404("Does not exist!")
     return render(request, 'travel/posting.html', {'post':post})
 
 def new_post(request):
