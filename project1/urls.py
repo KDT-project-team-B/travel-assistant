@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from travel.views import index, review, posting, new_post
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
     path('logioapp/',include('logioapp.urls')),
     path('aboutusapp/',include('aboutusapp.urls')),
+    path('admin/', admin.site.urls),
+    path('', index, name='index'),
+    path('review/', review, name='review'),
+    path('review/<int:pk>/',posting, name="posting"),
+    path('review/new_post/', new_post, name="new_post")
 ]
