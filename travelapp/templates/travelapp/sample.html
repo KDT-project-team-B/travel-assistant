@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head> <title>여긴어때 travel</title></head>
+	<body>
+		<strong><h1>Travel</h1></strong>
+			<input type="radio" name="selec" value="rest" checked>숙소
+			<input type="radio" name="selec" value="food"/>맛집
+			<br>
+			여행지:<div class="selectBox">
+					<select name="travel" size="1">
+						<option>제주</option> <option>부산</option>
+						<option>강릉</option>
+					</select>
+				</div>
+			<p>
+			여행지선택(복수선택 가능)<br>
+			{%if selectBox.travel =='제주'%}
+			    <input type="checkbox" name="locate" value="seomyun" disabled>서면
+			    <input type="checkbox" name="locate" value="haeundae" disabled>해운대
+			    <input type="checkbox" name="locate" value="seomyun"/>제주시
+			    <input type="checkbox" name="locate" value="haeundae"/>서귀포
+			    <input type="checkbox" name="locate" value="seomyun" disabled>교동
+			    <input type="checkbox" name="locate" value="haeundae" disabled>초당동
+			{%elif selectBox.travel =='부산'%}
+			    <input type="checkbox" name="locate" value="seomyun"/>서면
+			    <input type="checkbox" name="locate" value="haeundae"/>해운대
+			    <input type="checkbox" name="locate" value="seomyun" disabled>제주시
+			    <input type="checkbox" name="locate" value="haeundae" disabled>서귀포
+			    <input type="checkbox" name="locate" value="seomyun" disabled>교동
+			    <input type="checkbox" name="locate" value="haeundae" disabled>초당동
+			{%else selectBox.travel =='강릉'%}
+			    <input type="checkbox" name="locate" value="seomyun" disabled>서면
+			    <input type="checkbox" name="locate" value="haeundae" disabled>해운대
+			    <input type="checkbox" name="locate" value="seomyun" disabled>제주시
+			    <input type="checkbox" name="locate" value="haeundae" disabled>서귀포
+			    <input type="checkbox" name="locate" value="seomyun"/>교동
+			    <input type="checkbox" name="locate" value="haeundae"/>초당동
+			{%endif%}
+			<br>
+			</p>
+			<input type="submit" value="선택완료"/>
+			<input type="reset" value="뒤로가기"/>
+	</body>
+</html>
