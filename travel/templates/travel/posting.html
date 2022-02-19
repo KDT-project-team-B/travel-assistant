@@ -19,8 +19,9 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">{{ post.postname }} - {{ post.writer }}</h5>
-            <p class="card-text"><small class="text-muted">{{ post.date | date:"Y-m-d h:i" }}</small></p>
+            <h5 class="card-title">{{ post.postname }}</h5> 
+            <h7 class="card-title">{{ post.writer }}</h7>
+            <p class="card-text"><small class="text-muted">{{ post.date | date:"Y-m-d h:i" }} - ({{ post.counter }})</small></p>
             <p class="card-text">{{ post.contents }}</p>
         </div>
     </div>
@@ -35,6 +36,22 @@
                 <button id="delete-btn" type="submit" class="btn btn-danger">삭제</button>
             </form>
         </div>
+    </div>
+    <br>
+    <br>
+    <div>
+        <h5>{{ post.answer_set.count }}개의 답변이 있습니다.</h5>
+        <br>
+        {% for answer in post.answer_set.all %}
+        {{answer.contents}} - {{answer.date}} 
+        <br>
+        {% endfor %}
+        <br><br>
+        <form method="POST">
+          {% csrf_token %}
+          <p><textarea name="contents" id="contents" placeholder=" Comment..." rows="10" cols="100"></textarea></p>
+          <p><input class="btn btn-primary" type="submit" value="댓글 등록하기"></p>
+        </form>
     </div>
 </div>
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
