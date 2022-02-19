@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+        .gridbox-container {
+          display: grid;
+          grid-template-columns: repeat(9, 3em);
+        }
+
+        .gridbox-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 1);
+            padding: 1em;
+            font-size: 1em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .input-item-decorator {
+            color: rgba(136,137,220,1);
+        }
+
+        .fixed-item-decorator {
+            color: rgba(0,0,0,1);
+        }
+
+        .cell-padding-left {
+            margin-left: 0.2em;
+        }
+
+        .cell-padding-bottom {
+            margin-bottom: 0.2em;
+        }
+
+        #main-flexbox{
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        #content-flexbox{
+            display: flex;
+            flex: 1;
+            width: 100%;
+            flex-flow: row;
+        }
+
+        #dummy-flexbox {
+            display: flex;
+            flex: 2;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #sudoku-flexbox {
+            flex: 4;
+            flex-flow: row;
+            height: 100%;
+        }
+
+        #sudoku-flexbox > .gridbox-container{
+            justify-content: center;
+        }
+
+        #button-flexbox {
+            display: flex;
+            flex: 2;
+            flex-flow: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited, .btn-primary:focus {
+            width: 8em;
+            background-color: rgba(200, 177, 232, 1);
+            border-color: rgba(200, 177, 232, 1);
+        }
+
+        #submit-btn {
+            margin-bottom: 2em;
+        }
+
+        #ranking-btn {
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+
+        #ranking-submit {
+            margin-bottom: 2em;
+        }
+
+        #main-flexbox {
+            margin-top: 1em;
+        }
+
+        #nav-bar-flexbox {
+            margin-bottom: 1em;
+        }
+
+        #fail-toast {
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main-flexbox">
+        <div id="nav-bar-flexbox">
+            <h3>Rest Ranking</h3>
+	    <h6>숙소 랭킹</h6>
+        </div>
+        <div id="content-flexbox">
+            <div id="dummy-flexbox">
+		<div class="card-header">
+		    <i class="fas fa-table me-1"></i>
+			Room Data
+                </div>
+                <div class="card-body">
+                     <table id="datatablesSimple">
+                           <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Score</th>
+                                    <th>Addr</th>
+                                </tr>
+                           </thead>
+                           <tbody>
+                                 <tr>
+                                     <td>%s(숙소 이름)</td>
+                                     <td>%s(숙소 평점)</td>
+                                     <td>%s(숙소 주소)</td>
+                                 </tr>
+                                        
+                           </tbody>
+                    </table>
+              </div>
+	</div>
+            <div id="button-flexbox">
+                <div>
+                    <a id="submit-btn" class="btn btn-primary" role="button">SUBMIT</a>
+                </div>
+                <div>
+                    <a id="ranking-btn" class="btn btn-primary" role="button" href="ranking">랭킹 페이지</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function submit_ranking(name){
+            axios.post("/sudoku/ranking/register",{
+                'name' : name
+            }).then(function(response){
+                let status = response.data;
+                if(status == 'success'){
+                    location.href = "/ranking";
+                }
+                $('#success-toast-container').hide();
+            });
+        }
+    </script>
+</body>
+</html>

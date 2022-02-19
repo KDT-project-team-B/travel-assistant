@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     'mainapp',
     'logioapp',
     'aboutusapp',
-    'travel'
+    'travel',
+    'rankapp',
+    'travelapp',
+    'pandas',
+    'bootstrap4',
+    'import_export',
 ]
 
 MIDDLEWARE = [

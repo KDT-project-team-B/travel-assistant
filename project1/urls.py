@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from travel.views import index, review, posting, new_post
+from rankapp.views import main, rest_ranking, food_ranking
 from travel.views import review, food, posting, new_post, edit, delete
 
 urlpatterns = [
@@ -22,10 +24,15 @@ urlpatterns = [
     path('', include('mainapp.urls')),
     path('logioapp/',include('logioapp.urls')),
     path('aboutusapp/',include('aboutusapp.urls')),
+    path('admin/', admin.site.urls),
     path('review/', review, name='review'),
     path('review/food/', food, name='food'),
     path('review/<int:pk>/',posting, name="posting"),
     path('review/new_post/', new_post, name="new_post"),
     path('review/<int:pk>/edit', edit, name="edit"),
     path('review/<int:pk>/delete', delete, name="delete")
+    path('main/', main, name='main'), #메인 랭킹사이트
+    path('main/rest_ranking/', rest_ranking, name='rest_ranking'), #랭킹 페이지
+    path('main/food_ranking/', food_ranking, name='food_ranking'), #랭킹 페이지
+    path('travel/', include('travelapp.urls')),
 ]
