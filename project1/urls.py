@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from travel.views import index, review, posting, new_post
+from travel.views import review, posting, new_post
 from rankapp.views import main, rest_ranking, food_ranking
 from travel.views import review, food, posting, new_post, edit, delete
 
