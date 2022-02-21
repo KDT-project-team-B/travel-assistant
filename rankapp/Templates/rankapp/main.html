@@ -1,82 +1,87 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-	<meta charset="UTF-8">
-	<title>Travel-rank</title>
-	<link rel="stylesheet">
-</head>
-	<style>
-		header{}
-			.inner{
-				width: 1300px;
-				margin: auto;
-				}
-			.gnb{
-				text-align: right;
-				background-color: #28c7c2;
-				position: fixed;
-				width: 100%;
-				}
-			.gnb a{
-				border-left: 1px solid #000;
-				padding-left: 5px;
-				}
-			.gnb a:first-child{
-				border: none;
-				}
-			.logo{
-				padding-top: 20px;
-				}
-			.logo a{
-				text-align: center;
-				}
-			.logo a h3{
-				font-size: 40px;
-				}
-			.rest{
-				padding-left: 20px;
-				}
-			.rest a{
-				text-align: left;
-				}
-			.rest a h4{
-				font-size: 30px;
-				}
-			.food{
-				padding-right: 20px;
-				}
-			.food a{
-				text-align: right;
-				}
-			.food a h4{
-				font-size: 30px;
-				}
-	</style>
-
-<body>
+	<head>
+		<meta charset="UTF-8">
+		<title>Travel - rank</title>
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+	</head>
+	<body>
 	<header>
-		<div class="gnb">
-			<div class="inner">
-				<a href="#none">로그인</a>
-				<a href="#none">회원가입</a>
+		<div class="navbar navbar-dark bg-dark shadow-sm mb-3">
+			<div class="container d-flex justify-content-between">
+				<a href="{% url 'mainapp:index' %}" class="navbar-brand d-flex align-items-center">
+					<strong>여긴어때</strong>
+				</a>
 			</div>
 		</div>
-		<div class="logo">
-			<a href="index.html">
-				<h3>여긴어때</h3>
-			</a>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<h5><strong>어디로 떠나고 싶으신가요?</strong></h5>
+					<br>
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="radio" name="jb-radio" id="jb-radio-1"> 숙소
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="radio" name="jb-radio" id="jb-radio-1"> 맛집
+						</label>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="rest">
-			<a href="rest_ranking">
-				<h4>숙소랭킹</h4>
-			</a>
+		<br>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="radio" name="region" id="radio-1" > 제주
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="radio" name="region" id="radio-1"> 부산
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="radio" name="region" id="radio-1"> 강릉
+						</label>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="food">
-			<a href="food_ranking">
-				<h4>맛집랭킹</h4>
-			</a>
+		<br>
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="checkbox"> 제주시
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="checkbox"> 서귀포시
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="checkbox" autocomplete="off" disabled > 서면
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="checkbox" autocomplete="off" disabled > 해운대
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="checkbox" autocomplete="off" disabled > 교동
+						</label>
+						<label class="btn btn-outline-secondary btn-lg">
+							<input type="checkbox" autocomplete="off" disabled > 초당동
+						</label>
+					</div>
+				</div>
+			</div>
 		</div>
-	</header>
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+
 	</body>
 </html> 
