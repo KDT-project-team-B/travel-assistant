@@ -15,16 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-<<<<<<< HEAD
 from travel.views import review, food, posting, new_post, edit, delete
 from rankapp.views import main, rest_ranking, food_ranking
 from rankapp.views import *
-#from travel.views import review, food, posting, new_post, edit, delete
-=======
-from travel.views import review, posting, new_post
-from rankapp.views import main, rest_ranking, food_ranking
-from travel.views import review, food, posting, new_post, edit, delete
->>>>>>> 24195b4171b66001eede6f4a0ea711870bec24ea
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,14 +25,13 @@ urlpatterns = [
     path('logioapp/',include('logioapp.urls')),
     path('aboutusapp/',include('aboutusapp.urls')),
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-    #path('', index, name='index'),
     path('review/', review, name='review'), #메인 게시판
     path('review/<int:pk>/',posting, name="posting"),#새글 적은 페이지
     path('review/new_post/', new_post, name="new_post"), #새글 작성
+    path('review/food/', food, name='food'),
+    path('review/<int:pk>/edit', edit, name="edit"),
+    path('review/<int:pk>/delete', delete, name="delete"),
     path('main/', main, name='main'), #메인 랭킹사이트
-    #path('main/rest_ranking',select,name='rest_ranking'),
-    #path('main/select',select,name='select') #선택
     path('main/rest_ranking/', rest_ranking, name='rest_ranking'), #랭킹 페이지
     path('main/food_ranking/', food_ranking, name='food_ranking'), #랭킹 페이지
     path('main/jejusi_rest_ranking/', jejusi_rest_ranking, name='jejusi_rest_ranking'), #제주시랭킹 페이지
@@ -53,18 +45,4 @@ urlpatterns = [
     path('main/chodang_rest_ranking/', chodang_rest_ranking, name='chodang_rest_ranking'), #초당랭킹 페이지
     path('main/chodang_food_ranking/', chodang_food_ranking, name='chodang_food_ranking'), #초당랭킹 페이지
     path('travel/', include('travelapp.urls')),
-=======
-    path('review/', review, name='review'),
->>>>>>> 24195b4171b66001eede6f4a0ea711870bec24ea
-    path('review/food/', food, name='food'),
-    path('review/<int:pk>/edit', edit, name="edit"),
-<<<<<<< HEAD
-    path('review/<int:pk>/delete', delete, name="delete")
-=======
-    path('review/<int:pk>/delete', delete, name="delete"),
-    path('main/', main, name='main'), #메인 랭킹사이트
-    path('main/rest_ranking/', rest_ranking, name='rest_ranking'), #랭킹 페이지
-    path('main/food_ranking/', food_ranking, name='food_ranking'), #랭킹 페이지
-    path('travel/', include('travelapp.urls')),
->>>>>>> 24195b4171b66001eede6f4a0ea711870bec24ea
 ]
