@@ -1,80 +1,175 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-	<head>
-		<meta charset="UTF-8">
-		<title>Travel - rank</title>
-		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
-	</head>
-	<body>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Travel-rank</title>
+	<link rel="stylesheet">
+</head>
+	<style>
+		header{}
+			.inner{
+				width: 1300px;
+				margin: auto;
+				}
+			.gnb{
+				text-align: right;
+				background-color: #28c7c2;
+				position: fixed;
+				width: 100%;
+				}
+			.gnb a{
+				border-left: 1px solid #000;
+				padding-left: 5px;
+				}
+			.gnb a:first-child{
+				border: none;
+				}
+			.container{
+				weight: 50%;
+				height: 600px;
+			}
+			.rcontainer{
+				margin-left:40%;
+				weight: 50%;
+				height: 600px;
+			}
+
+			.logo{
+				padding-top: 20px;
+				}
+			.logo a{
+				text-decoration-line: none;
+				text-align: center;
+				}
+			.logo a h3{
+				text-decoration-line: none;
+				font-size: 40px;
+				}
+			.rest{
+				text-align: left;
+				padding-left: 20px;
+				}
+			.rest a{
+				text-decoration-line: none;
+				text-align: left;
+				}
+			.rest a h4{
+				font-size: 25px;
+				text-decoration-line: none;
+				}
+			.food{
+				text-align: right;
+				padding-right: 20px;
+				}
+			.food a{
+				text-decoration-line: none;
+				text-align: right;
+				}
+			.food a h4{
+				text-decoration-line: none;
+				font-size: 25px;
+				}
+			
+			.home_main{
+				display: flex;
+				flex:1;
+			  }
+
+			.home_contents1{
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			    
+				width: 50%;
+
+				margin-left: 15px;
+				margin-bottom: 15px;
+			  
+				border: 1px solid silver;
+				border-radius: 9px;
+			  
+				background-color: white;
+				  
+				font-family: 'Nanum Gothic', sans-serif;
+			  }
+
+			.home_contents{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				width: 50%;  
+				margin-left: 30px;
+				margin-bottom: 15px;
+				  
+				border: 1px solid silver;
+				border-radius: 9px;
+				  
+				background-color: white;
+			  }
+	</style>
+
+<body>
 	<header>
-		<div class="navbar navbar-dark bg-dark shadow-sm mb-3">
-			<div class="container d-flex justify-content-between">
-				<a href="{% url 'mainapp:index' %}" class="navbar-brand d-flex align-items-center">
-					<strong>여긴어때</strong>
-				</a>
+		<div class="gnb">
+			<div class="inner">
+				<a href='#'>로그인</a>
 			</div>
 		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<h5><strong>어디로 떠나고 싶으신가요?</strong></h5>
-					<br>
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="radio" name="jb-radio" id="jb-radio-1"> 숙소
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="radio" name="jb-radio" id="jb-radio-1"> 맛집
-						</label>
-					</div>
+		<div class="logo">
+			<a href="{% url 'mainapp:index' %}">
+				<h1>여긴어때</h1>
+			</a>
+			<center><h4>어디로 떠나고 싶으신가요?<h4></center>
+			<br>
+		</div>
+		<div class='home_main'>
+			<div class='home_contents1'>
+				<div class="rest">
+					<h2><b>숙소추천</b></h2>
+					<a href="rest_ranking">
+						<h4>서귀포</h4>
+					</a>
+					<a href="jejusi_rest_ranking">
+						<h4>제주시</h4>
+					</a>
+					<a href="haeundae_rest_ranking">
+						<h4>해운대</h4>
+					</a>
+					<a href="seomyun_rest_ranking">
+						<h4>서면</h4>
+					</a>
+					<a href="gyodong_rest_ranking">
+						<h4>교동</h4>
+					</a>
+					<a href="chodang_rest_ranking">
+						<h4>초당동</h4>
+					</a>
 				</div>
 			</div>
-		</div>
-		<br>
-		<br>
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="radio" name="region" id="radio-1" > 제주
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="radio" name="region" id="radio-1"> 부산
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="radio" name="region" id="radio-1"> 강릉
-						</label>
-					</div>
-				</div>
-			</div>
-		</div>
-		<br>
-		<br>
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="checkbox"> 제주시
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="checkbox"> 서귀포시
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="checkbox" autocomplete="off" disabled > 서면
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="checkbox" autocomplete="off" disabled > 해운대
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="checkbox" autocomplete="off" disabled > 교동
-						</label>
-						<label class="btn btn-outline-secondary btn-lg">
-							<input type="checkbox" autocomplete="off" disabled > 초당동
-						</label>
-					</div>
+			<div class='home_contents'>
+				<div class="food">
+					<h2><b>맛집추천</b></h2>
+					<a href="food_ranking">
+						<h4>서귀포</h4>
+					</a>
+					<a href="jejusi_food_ranking">
+						<h4>제주시</h4>
+					</a>
+					<a href="haeundae_food_ranking">
+						<h4>해운대</h4>
+					</a>
+					<a href="seomyun_food_ranking">
+						<h4>서면</h4>
+					</a>
+					<a href="gyodong_food_ranking">
+						<h4>교동</h4>
+					</a>
+					<a href="chodang_food_ranking">
+						<h4>초당동</h4>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -82,6 +177,5 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-
 	</body>
-</html> 
+</html>

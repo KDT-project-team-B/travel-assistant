@@ -87,7 +87,7 @@
 			<br>
 			<br>
 			<div class="rests">
-				{%for a in restlist%}
+				{%for a in jejusirest%}
 				<div class="rest">
 					<a href="#none">
 						<img src='https://image.shutterstock.com/image-photo/english-house-600w-200704826.jpg' width='100' height='100' alt="room">
@@ -100,16 +100,15 @@
 					</a>
 				</div>
 				{% endfor %}
-
 			</div>
 		</div>
 	</div>
 	<button onclick='back()'> 뒤로가기 </button>
-	<ul class="pagination justify-content-center" style='margin-top: 2rem;'>
+	<ul class="pagination justify-content-center" style='margin-top: 2rem'>
 		<!-- 이전페이지 -->
-		{% if restlist.has_previous %}
+		{% if jejusirest.has_previous %}
 		<li class="page-item">
-			<a class="page-link" href="?page={{ restlist.previous_page_number }}">이전</a>
+			<a class="page-link" href="?page={{ jejusirest.previous_page_number }}">이전</a>
 		</li>
 		{% else %}
 		<li class="page-item disabled">
@@ -117,9 +116,9 @@
 		</li>
 		{% endif %}
 		<!-- 페이지리스트 -->
-		{% for page_number in restlist.paginator.page_range %}
-		{% if restlist.number|add:-2 <= page_number <= restlist.number|add:2 %}
-			{% if page_number == restlist.number %}
+		{% for page_number in jejusirest.paginator.page_range %}
+		{% if jejusirest.number|add:-2 <= page_number <= jejusirest.number|add:2 %}
+			{% if page_number == jejusirest.number %}
 			<li class="page-item active" aria-current="page">
 				<a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
 			</li>
@@ -131,9 +130,9 @@
 		{% endif %}
 		{% endfor %}
 		<!-- 다음페이지 -->
-		{% if restlist.has_next %}
+		{% if jejusirest.has_next %}
 		<li class="page-item">
-			<a class="page-link" href="?page={{ restlist.next_page_number }}">다음</a>
+			<a class="page-link" href="?page={{ jejusirest.next_page_number }}">다음</a>
 		</li>
 		{% else %}
 		<li class="page-item disabled">
@@ -141,6 +140,7 @@
 		</li>
 		{% endif %}
 	</ul>
+
 	<script src="script/jquery-3.5.1.min.js"></script>
 	<script src="script/custom.js"></script>
 </body>

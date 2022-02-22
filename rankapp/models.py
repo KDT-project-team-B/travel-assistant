@@ -98,3 +98,12 @@ class chodangdong_rest(models.Model):
     def __str__(self):
         return self.title
     
+class TestData(models.Model):
+    title = models.CharField(max_length=255)
+    score = models.CharField(max_length=255)
+    addr = models.CharField(max_length=255)
+    img = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.title
+    
