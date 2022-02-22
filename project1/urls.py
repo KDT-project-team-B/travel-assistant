@@ -19,6 +19,7 @@ from travel.views import review, food, posting, new_post, edit, delete
 from rankapp.views import main, rest_ranking, food_ranking
 from rankapp.views import *
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('mainapp.urls')),
