@@ -7,11 +7,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE','project1.settings')
 import pandas as pd
 import django
 django.setup()
-from rankapp.models import Data,jejusi_food,haeundae_food,seomyun_food,gyodong_food,chodangdong_food,TestData
+from rankapp.models import Data,jejusi_food,haeundae_food,seomyun_food,gyodong_food,chodangdong_food
 from rankapp.models import seoguipo_rest,jejusi_rest,haeundae_rest,seomyun_rest,gyodong_rest,chodangdong_rest
+from travelapp.models import *
 
-#이미지 추가방법
-f= open('c:/Myexam/seoquipo_food.html',encoding='utf-8')
+#이미지 추가방법(맛집/숙소)
+f= open('c:/Myexam/chodang_food.html',encoding='utf-8')
 
 html_source=f.read()
 f.close()
@@ -42,11 +43,11 @@ for etc in description:
 for image in img:
     imgs.append(image.get('data-original'))
 
-if __name__ == '__main__':   
-    for i in range(len(names)):
-        TestData(title=names[i], score=rest_scores[i], addr=desc[i], img=imgs[i]).save()
+#if __name__ == '__main__':   
+#    for i in range(len(names)):
+#        chodang(title=names[i], score=rest_scores[i], addr=desc[i], img=imgs[i]).save()
 
-f= open('c:/Myexam/haeundae_rest.html', encoding='utf-8')
+f= open('c:/Myexam/chodang_rest.html', encoding='utf-8')
 
 html_source=f.read()
 f.close()
@@ -78,7 +79,11 @@ for etc in addrs:
     desc.append(etc.get_text())
     
 for img in imgs:
-    image.append(img.get('style')) #이미지 크롤링->".jpg" 의 내용만 넣으면 크롤링 가능
+    image.append(img.get('style')[23:len(img)-3]) #이미지 크롤링->".jpg" 의 내용만 넣으면 크롤링 가능
+
+#if __name__ == '__main__':   
+#    for i in range(40):
+#        chodangrest(title=r_name[i], score=rest_scores[i], addr=desc[i], img=image[i]).save()
 '''
 f= open('c:/Myexam/haeundae_rest.html', encoding='utf-8')
 
