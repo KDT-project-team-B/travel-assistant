@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style type="text/css"> 
      a{ 
-           text-decoration:none;
-           color : black;
+           text-decoration:none !important;
+           color : black !important;
            font-size: 80px;
         } 
      .navbar-login{
@@ -22,31 +22,20 @@
     </style> 
     <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <title>Hello, pybo!</title>
+    <title>Signup</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
    <center> 
     <a class="navbar-main" href="{% url 'mainapp:index' %}">여긴 어때</a>
-   </center>
     <a class="navbar-login" href="{% url 'logioapp:login' %}">login</a>
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
     <br>
-       <center>
         <a class="second-line" href="{% url 'aboutusapp:index' %}">About Us</a>
         <a class="second-line"> | </a>
-        <a class="second-line" href="#">Travel</a>
+        <a class="second-line" href="/main/">Travel</a>
         <a class="second-line"> | </a>
-        <a class="second-line" href="#">Review</a>
+        <a class="second-line" href="/review/">Review</a>
       </center>
-    </div>
-</nav>
 <div class="container my-3">
-    <div class="row my-3">
-        <div class="col-4">
-            <h4>계정생성</h4>
-        </div>
-    </div>
     <form method="post" class="post-form" action="{% url 'logioapp:signup' %}">
         {% csrf_token %}
         {% include "logioapp/form_errors.html" %}
