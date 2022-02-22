@@ -48,24 +48,24 @@
 				font-size: 40px;
 				}
 			.rest{
-				text-align: left;
+				text-align: center;
 				padding-left: 20px;
 				}
 			.rest a{
 				text-decoration-line: none;
-				text-align: left;
+				text-align: center;
 				}
 			.rest a h4{
 				font-size: 25px;
 				text-decoration-line: none;
 				}
 			.food{
-				text-align: right;
+				text-align: center;
 				padding-right: 20px;
 				}
 			.food a{
 				text-decoration-line: none;
-				text-align: right;
+				text-align: center;
 				}
 			.food a h4{
 				text-decoration-line: none;
@@ -112,23 +112,58 @@
 	</style>
 
 <body>
-	<header>
-		<div class="gnb">
-			<div class="inner">
-				<a href='#'>로그인</a>
-			</div>
-		</div>
-		<div class="logo">
-			<a href="{% url 'mainapp:index' %}">
-				<h1>여긴어때</h1>
-			</a>
+	{% load static %}
+	<!doctype html>
+	<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="shortcut icon" href="{% static 'favicon.ico' %}"/>
+		<link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+		<title>여긴 어때</title>
+	</head>
+	
+	<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	   <div class="container-fluid">
+		  <img src="{% static 'favicon.ico' %}" alt="" width="24" height="24" class="d-inline-block align-text-top" style="margin-right:10px;"> 
+		 <a class="navbar-brand" href="{% url 'mainapp:index' %}">여긴 어때</a>
+		 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		   <span class="navbar-toggler-icon"></span>
+		 </button>
+		 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+			 <li class="nav-item">
+			   <a class="nav-link active" aria-current="page" href="/#page-top"/">About Us</a>
+			 </li>
+			 <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="/main/">Travel</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link active" aria-current="page" href="/review/">Review</a>
+			  </li>
+		  </ul>
+		   <div class="col" style="text-align: right;">
+			 {% if user.is_authenticated %}
+			 <a class="welcome" >{{ user.username }}님 환영합니다!</a>
+			 <a class="navbar-login" href="{% url 'logioapp:logout' %}">logout</a>
+			 {% else %}
+			 <a class="navbar-login" href="{% url 'logioapp:login' %}">login</a>
+			 {% endif %}
+		   </div>
+		  </div>
+	   </div>
+	 </nav>
+	 <br>
 			<center><h4>어디로 떠나고 싶으신가요?<h4></center>
 			<br>
 		</div>
 		<div class='home_main'>
-			<div class='home_contents1'>
+			<div class='home_contents1' style='margin-right:30px; margin-top:15px;'>
 				<div class="rest">
 					<h2><b>숙소추천</b></h2>
+					<br>
 					<a href="rest_ranking">
 						<h4>서귀포</h4>
 					</a>
@@ -149,9 +184,10 @@
 					</a>
 				</div>
 			</div>
-			<div class='home_contents'>
+			<div class='home_contents' style='margin-right:30px; margin-top:15px;'>
 				<div class="food">
 					<h2><b>맛집추천</b></h2>
+					<br>
 					<a href="food_ranking">
 						<h4>서귀포</h4>
 					</a>
