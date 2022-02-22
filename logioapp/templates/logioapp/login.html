@@ -40,6 +40,16 @@
         </div>
     </div>
     <br>
+   <center> 
+    <a class="navbar-main" href="{% url 'mainapp:index' %}">여긴 어때</a>
+        <br>
+        <a class="second-line" href="{% url 'aboutusapp:index' %}">About Us</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="/main/">Travel</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="/review/">Review</a>
+      </center>
+<div class="container my-3">
     <form method="post" class="post-form" action="{% url 'logioapp:login' %}">
         {% csrf_token %}
         {% include "logioapp/form_errors.html" %}
@@ -59,6 +69,10 @@
         <button type="submit" class="btn btn-primary" style=" display: inline-block;">로그인</button>
         <button type="button" class="btn btn-info" style=" display: inline-block;" onclick="location.href='/logioapp/signup/';"> 회원가입 </button>
         </div>
+        <button type="submit" class="btn btn-primary">로그인</button>
+        <span>
+        <button type="button" class="btn btn-primary" onclick="location.href='{% url 'logioapp:signup' %}' ">회원가입</button>
+        </span>
     </form>
 </div>
 </body>

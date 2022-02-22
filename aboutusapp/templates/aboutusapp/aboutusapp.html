@@ -41,6 +41,22 @@
       </div>
    </div>
  </nav>
+   <center> 
+    <a class="navbar-main" href="{% url 'mainapp:index' %}">여긴 어때</a>
+    {% if user.is_authenticated %}
+    <p class="welcome" >{{ user.username }}님 환영합니다!</p>
+    <a class="navbar-login" href="{% url 'logioapp:logout' %}">logout</a>
+    {% else %}
+    <a class="navbar-login" href="{% url 'logioapp:login' %}">login</a>
+    {% endif %}
+    <br>
+        <a class="second-line" href="{% url 'aboutusapp:index' %}">About Us</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="/main/">Travel</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="/review/">Review</a>
+      </center>
+    </div>
 aboutus 화면입니다.
 </body>
 </html>

@@ -48,6 +48,17 @@
         </div>
     </div>
     <br>
+   <center> 
+    <a class="navbar-main" href="{% url 'mainapp:index' %}">여긴 어때</a>
+    <a class="navbar-login" href="{% url 'logioapp:login' %}">login</a>
+    <br>
+        <a class="second-line" href="{% url 'aboutusapp:index' %}">About Us</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="/main/">Travel</a>
+        <a class="second-line"> | </a>
+        <a class="second-line" href="/review/">Review</a>
+      </center>
+<div class="container my-3">
     <form method="post" class="post-form" action="{% url 'logioapp:signup' %}">
         {% csrf_token %}
         {% include "logioapp/form_errors.html" %}
