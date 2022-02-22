@@ -4,7 +4,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta charset="UTF-8">
-	<title>맛집랭킹</title>
+	<title>숙소랭킹</title>
 	<center><a href={% url 'main' %}><h1>랭킹추천</h1></a></center>
 	<br><hr>
 	<link rel="stylesheet">
@@ -45,7 +45,7 @@
 		.container{
 			height: 600px;
 		}
-		.foods{
+		.rests{
 			width: 1000px;
 			height: 95%;
 			padding: 100px;
@@ -55,7 +55,7 @@
 			align-content: space-around;
 			flex-wrap: wrap;
 		}
-		.food{
+		.rest{
 			border: 1px solid #f00;
 			float: left;
 			width: 400px;
@@ -63,20 +63,20 @@
 			padding: 10px;
 			margin-top: 5px;
 		}
-		.food > a{
+		.rest > a{
 			display: flex;
 		}
-		.food > a img{}
-		.food-info{
+		.rest > a img{}
+		.rest-info{
 			width: 90%;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
 			margin-left: 10px;
 		}
-		.food_name{}
-		.food_score{}
-		.food_addr{}
+		.rest_name{}
+		.rest_score{}
+		.rest_addr{}
  
 	</style>
 <body>
@@ -86,29 +86,30 @@
 			<br>
 			<br>
 			<br>
-			<div class="foods">
-				{%for a in foodlist%}
-				<div class="food">
+			<div class="rests">
+				{%for a in restlist%}
+				<div class="rest">
 					<a href="#none">
-						<img src="{{a.img}}" width='100' height='100' alt="food">
-						<span class="food-info">
+						<img src="{{a.img}}" width='100' height='100' alt="room">
+						<span class="rest-info">
 							<br>
-							<span class="food_name">{{a.name}}</span>
-							<span class="food_score">{{a.sc}}</span><br>
-							<span class="food_addr">{{a.a}}</span>
+							<span class="rest_name">{{a.title}}</span>
+							<span class="rest_score">{{a.score}}</span><br>
+							<span class="rest_addr">{{a.addr}}</span>
 						</span>
 					</a>
 				</div>
 				{% endfor %}
+
 			</div>
 		</div>
 	</div>
 	<button onclick='back()'> 뒤로가기 </button>
-	<ul class="pagination justify-content-center" style='margin-top: 2rem'>
+	<ul class="pagination justify-content-center" style='margin-top: 2rem;'>
 		<!-- 이전페이지 -->
-		{% if foodlist.has_previous %}
+		{% if restlist.has_previous %}
 		<li class="page-item">
-			<a class="page-link" href="?page={{ foodlist.previous_page_number }}">이전</a>
+			<a class="page-link" href="?page={{ restlist.previous_page_number }}">이전</a>
 		</li>
 		{% else %}
 		<li class="page-item disabled">
@@ -116,9 +117,9 @@
 		</li>
 		{% endif %}
 		<!-- 페이지리스트 -->
-		{% for page_number in foodlist.paginator.page_range %}
-		{% if foodlist.number|add:-2 <= page_number <= foodlist.number|add:2 %}
-			{% if page_number == foodlist.number %}
+		{% for page_number in restlist.paginator.page_range %}
+		{% if restlist.number|add:-2 <= page_number <= restlist.number|add:2 %}
+			{% if page_number == restlist.number %}
 			<li class="page-item active" aria-current="page">
 				<a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
 			</li>
@@ -130,9 +131,9 @@
 		{% endif %}
 		{% endfor %}
 		<!-- 다음페이지 -->
-		{% if foodlist.has_next %}
+		{% if restlist.has_next %}
 		<li class="page-item">
-			<a class="page-link" href="?page={{ foodlist.next_page_number }}">다음</a>
+			<a class="page-link" href="?page={{ restlist.next_page_number }}">다음</a>
 		</li>
 		{% else %}
 		<li class="page-item disabled">
@@ -140,7 +141,6 @@
 		</li>
 		{% endif %}
 	</ul>
-
 	<script src="script/jquery-3.5.1.min.js"></script>
 	<script src="script/custom.js"></script>
 </body>

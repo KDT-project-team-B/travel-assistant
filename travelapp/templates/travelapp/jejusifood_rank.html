@@ -87,15 +87,15 @@
 			<br>
 			<br>
 			<div class="foods">
-				{%for a in foodlist%}
+				{%for a in jejusifood%}
 				<div class="food">
 					<a href="#none">
 						<img src="{{a.img}}" width='100' height='100' alt="food">
 						<span class="food-info">
 							<br>
-							<span class="food_name">{{a.name}}</span>
-							<span class="food_score">{{a.sc}}</span><br>
-							<span class="food_addr">{{a.a}}</span>
+							<span class="food_name">{{a.title}}</span>
+							<span class="food_score">{{a.score}}</span><br>
+							<span class="food_addr">{{a.addr}}</span>
 						</span>
 					</a>
 				</div>
@@ -106,9 +106,9 @@
 	<button onclick='back()'> 뒤로가기 </button>
 	<ul class="pagination justify-content-center" style='margin-top: 2rem'>
 		<!-- 이전페이지 -->
-		{% if foodlist.has_previous %}
+		{% if jejusifood.has_previous %}
 		<li class="page-item">
-			<a class="page-link" href="?page={{ foodlist.previous_page_number }}">이전</a>
+			<a class="page-link" href="?page={{ jejusifood.previous_page_number }}">이전</a>
 		</li>
 		{% else %}
 		<li class="page-item disabled">
@@ -116,9 +116,9 @@
 		</li>
 		{% endif %}
 		<!-- 페이지리스트 -->
-		{% for page_number in foodlist.paginator.page_range %}
-		{% if foodlist.number|add:-2 <= page_number <= foodlist.number|add:2 %}
-			{% if page_number == foodlist.number %}
+		{% for page_number in jejusifood.paginator.page_range %}
+		{% if jejusifood.number|add:-2 <= page_number <= jejusifood.number|add:2 %}
+			{% if page_number == jejusifood.number %}
 			<li class="page-item active" aria-current="page">
 				<a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
 			</li>
@@ -130,9 +130,9 @@
 		{% endif %}
 		{% endfor %}
 		<!-- 다음페이지 -->
-		{% if foodlist.has_next %}
+		{% if jejusifood.has_next %}
 		<li class="page-item">
-			<a class="page-link" href="?page={{ foodlist.next_page_number }}">다음</a>
+			<a class="page-link" href="?page={{ jejusifood.next_page_number }}">다음</a>
 		</li>
 		{% else %}
 		<li class="page-item disabled">
