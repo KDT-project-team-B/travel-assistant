@@ -41,45 +41,36 @@
       </div>
    </div>
  </nav>
-<div class="container my-3" style='width: 430px;'>
+<div class="container my-3" style='width: 480px;'>
     <div class="row">
-        <div class="col-4" style="margin-left: 100px; margin-right: 100px;">
+        <div class="col-4" style="margin-left: 150px; margin-right: 100px;">
             <h2><strong>계정생성</strong></h2>
         </div>
     </div>
     <br>
-   <center> 
-    <a class="navbar-main" href="{% url 'mainapp:index' %}">여긴 어때</a>
-    <a class="navbar-login" href="{% url 'logioapp:login' %}">login</a>
-    <br>
-        <a class="second-line" href="{% url 'aboutusapp:index' %}">About Us</a>
-        <a class="second-line"> | </a>
-        <a class="second-line" href="/main/">Travel</a>
-        <a class="second-line"> | </a>
-        <a class="second-line" href="/review/">Review</a>
-      </center>
+
 <div class="container my-3">
     <form method="post" class="post-form" action="{% url 'logioapp:signup' %}">
         {% csrf_token %}
         {% include "logioapp/form_errors.html" %}
         <div class="form-group">
             <label for="realname">이름</label>
-            <input type="text" placeholder='사용할 이름을 입력하세요' style="width:300px;" class="form-control" name="realname" id="realname"
+            <input type="text" placeholder='사용할 이름을 입력하세요' style="width:410px;" class="form-control" name="realname" id="realname"
                    value="{{ form.realname.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
             <label for="username">아이디</label>
-            <input type="text" placeholder='아이디를 입력하세요' style="width:300px;" class="form-control" name="username" id="username"
+            <input type="text" placeholder='아이디를 입력하세요' style="width:410px;" class="form-control" name="username" id="username"
                    value="{{ form.id.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
             <label for="password1">비밀번호</label>
-            <input type="password" placeholder='비밀번호를 입력하세요' style="width:300px;" class="form-control" name="password1" id="password1"
+            <input type="password" placeholder='비밀번호를 입력하세요' style="width:410px;" class="form-control" name="password1" id="password1"
                    value="{{ form.password1.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
             <label for="password2">비밀번호 확인</label>
-            <input type="password" placeholder='비밀번호 재확인...' style="width:300px;" class="form-control" name="password2" id="password2"
+            <input type="password" placeholder='비밀번호 재확인...' style="width:410px;" class="form-control" name="password2" id="password2"
                    value="{{ form.password2.value|default_if_none:'' }}">
         </div>
         <div class="form-group">
