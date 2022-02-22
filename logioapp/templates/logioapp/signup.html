@@ -48,8 +48,6 @@
         </div>
     </div>
     <br>
-
-<div class="container my-3">
     <form method="post" class="post-form" action="{% url 'logioapp:signup' %}">
         {% csrf_token %}
         {% include "logioapp/form_errors.html" %}
