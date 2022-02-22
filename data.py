@@ -2,13 +2,84 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import os
+#from Project1.rankapp.models import TestData
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','project1.settings')
 import pandas as pd
 import django
 django.setup()
-from rankapp.models import Data,jejusi_food,haeundae_food,seomyun_food,gyodong_food,chodangdong_food
+from rankapp.models import Data,jejusi_food,haeundae_food,seomyun_food,gyodong_food,chodangdong_food,TestData
 from rankapp.models import seoguipo_rest,jejusi_rest,haeundae_rest,seomyun_rest,gyodong_rest,chodangdong_rest
 
+#이미지 추가방법
+f= open('c:/Myexam/seoquipo_food.html',encoding='utf-8')
+
+html_source=f.read()
+f.close()
+
+soup = BeautifulSoup(html_source, 'html.parser')
+
+title_names = soup.select('div h2')
+scores = soup.find_all(attrs={'class':'point'})
+description = soup.find_all(attrs={'class':'etc'})
+img = soup.select('figure > a > div > img')
+
+rest_scores=[] #평점
+desc=[] #설명
+names=[] #가게이름
+imgs=[] #이미지
+
+for title_name in title_names:
+        names.append(title_name.get_text())
+            
+for score in scores:
+    rest_scores.append(score.get_text())
+    if (score == None):
+        rest_scores.append('평점없음')
+    
+for etc in description:
+    desc.append(etc.get_text())
+    
+for image in img:
+    imgs.append(image.get('data-original'))
+
+if __name__ == '__main__':   
+    for i in range(len(names)):
+        TestData(title=names[i], score=rest_scores[i], addr=desc[i], img=imgs[i]).save()
+
+f= open('c:/Myexam/haeundae_rest.html', encoding='utf-8')
+
+html_source=f.read()
+f.close()
+
+soup = BeautifulSoup(html_source, 'html.parser')
+
+names = soup.find_all(attrs={'class':'hotel-name'})
+#//*[@id="search_results_table"]/div/div/div/div/div[6]/div[5]/div[1]/div[2]/div/div/div/div[1]/div/div[1]/div/h3/a/div[1]
+rates = soup.find_all(attrs={'class':'hotel-rating'})
+
+addrs = soup.find_all(attrs={'class':'hotel-address'})
+
+imgs = soup.find_all(attrs={'class':'hotel-img'})
+
+r_name=[] #가게이름
+rest_scores=[] #평점
+desc=[] #설명
+image=[] #이미지
+
+for title_name in names:
+    r_name.append(title_name.get_text())
+            
+for score in rates:
+    rest_scores.append(score.get_text())
+    if (score == None):
+        rest_scores.append('평점없음')
+    
+for etc in addrs:
+    desc.append(etc.get_text())
+    
+for img in imgs:
+    image.append(img.get('style')) #이미지 크롤링->".jpg" 의 내용만 넣으면 크롤링 가능
+'''
 f= open('c:/Myexam/haeundae_rest.html', encoding='utf-8')
 
 html_source=f.read()
@@ -203,7 +274,7 @@ if __name__ == '__main__':
         jejusi_rest(title=r_name[i], score=rest_scores[i], addr=desc[i]).save()
 
 #돌려본것
-
+'''
 '''
 f= open('c:/Myexam/haeundae_food.html',encoding='utf-8')
 

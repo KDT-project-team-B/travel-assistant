@@ -25,58 +25,153 @@
 			.gnb a:first-child{
 				border: none;
 				}
+			.container{
+				weight: 50%;
+				height: 600px;
+			}
+			.rcontainer{
+				margin-left:40%;
+				weight: 50%;
+				height: 600px;
+			}
+
 			.logo{
 				padding-top: 20px;
 				}
 			.logo a{
+				text-decoration-line: none;
 				text-align: center;
 				}
 			.logo a h3{
+				text-decoration-line: none;
 				font-size: 40px;
 				}
 			.rest{
+				text-align: left;
 				padding-left: 20px;
 				}
 			.rest a{
+				text-decoration-line: none;
 				text-align: left;
 				}
 			.rest a h4{
-				font-size: 30px;
+				font-size: 25px;
+				text-decoration-line: none;
 				}
 			.food{
+				text-align: right;
 				padding-right: 20px;
 				}
 			.food a{
+				text-decoration-line: none;
 				text-align: right;
 				}
 			.food a h4{
-				font-size: 30px;
+				text-decoration-line: none;
+				font-size: 25px;
 				}
+			
+			.home_main{
+				display: flex;
+				flex:1;
+			  }
+
+			.home_contents1{
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			    
+				width: 50%;
+
+				margin-left: 15px;
+				margin-bottom: 15px;
+			  
+				border: 1px solid silver;
+				border-radius: 9px;
+			  
+				background-color: white;
+				  
+				font-family: 'Nanum Gothic', sans-serif;
+			  }
+
+			.home_contents{
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				width: 50%;  
+				margin-left: 30px;
+				margin-bottom: 15px;
+				  
+				border: 1px solid silver;
+				border-radius: 9px;
+				  
+				background-color: white;
+			  }
 	</style>
 
 <body>
 	<header>
 		<div class="gnb">
 			<div class="inner">
-				<a href="#none">로그인</a>
-				<a href="#none">회원가입</a>
+				<a href='#'>로그인</a>
 			</div>
 		</div>
 		<div class="logo">
-			<a href="index.html">
-				<h3>여긴어때</h3>
+			<a href="{% url 'mainapp:index' %}">
+				<h1>여긴어때</h1>
 			</a>
+			<center><h4>어디로 떠나고 싶으신가요?<h4></center>
+			<br>
 		</div>
-		<div class="rest">
-			<a href="rest_ranking">
-				<h4>숙소랭킹</h4>
-			</a>
-		</div>
-		<div class="food">
-			<a href="food_ranking">
-				<h4>맛집랭킹</h4>
-			</a>
+		<div class='home_main'>
+			<div class='home_contents1'>
+				<div class="rest">
+					<h2><b>숙소추천</b></h2>
+					<a href="rest_ranking">
+						<h4>서귀포</h4>
+					</a>
+					<a href="jejusi_rest_ranking">
+						<h4>제주시</h4>
+					</a>
+					<a href="haeundae_rest_ranking">
+						<h4>해운대</h4>
+					</a>
+					<a href="seomyun_rest_ranking">
+						<h4>서면</h4>
+					</a>
+					<a href="gyodong_rest_ranking">
+						<h4>교동</h4>
+					</a>
+					<a href="chodang_rest_ranking">
+						<h4>초당동</h4>
+					</a>
+				</div>
+			</div>
+			<div class='home_contents'>
+				<div class="food">
+					<h2><b>맛집추천</b></h2>
+					<a href="food_ranking">
+						<h4>서귀포</h4>
+					</a>
+					<a href="jejusi_food_ranking">
+						<h4>제주시</h4>
+					</a>
+					<a href="haeundae_food_ranking">
+						<h4>해운대</h4>
+					</a>
+					<a href="seomyun_food_ranking">
+						<h4>서면</h4>
+					</a>
+					<a href="gyodong_food_ranking">
+						<h4>교동</h4>
+					</a>
+					<a href="chodang_food_ranking">
+						<h4>초당동</h4>
+					</a>
+				</div>
+			</div>
 		</div>
 	</header>
 	</body>
-</html> 
+</html>

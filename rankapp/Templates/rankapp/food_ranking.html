@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta charset="UTF-8">
 	<title>맛집랭킹</title>
-	<center><h1>랭킹추천</h1></center>
+	<center><a href={% url 'main' %}><h1>랭킹추천</h1></a></center>
 	<br><hr>
 	<link rel="stylesheet">
 </head>
@@ -33,6 +33,10 @@
 			outline: none;
 		}
 		button{
+			border:1px solid White;
+			background-color:rgba(0,0,0,0);
+			color:Black;
+			padding:5px;
 			cursor: pointer;
 		}
 		textarea{
@@ -86,7 +90,7 @@
 				{%for a in foodlist%}
 				<div class="food">
 					<a href="#none">
-						<img src="imgfile.jpg" alt="room1">
+						<img src="https://image.shutterstock.com/image-photo/gourmet-tasty-steak-burgers-ham-600w-316591013.jpg" width='100' height='100' alt="food">
 						<span class="food-info">
 							<br>
 							<span class="food_name">{{a.title}}</span>
@@ -99,7 +103,7 @@
 			</div>
 		</div>
 	</div>
-	<button> 더보기 </button>
+	<button onclick='back()'> 뒤로가기 </button>
 	<ul class="pagination justify-content-center" style='margin-top: 2rem'>
 		<!-- 이전페이지 -->
 		{% if foodlist.has_previous %}
@@ -114,7 +118,7 @@
 		<!-- 페이지리스트 -->
 		{% for page_number in foodlist.paginator.page_range %}
 		{% if foodlist.number|add:-2 <= page_number <= foodlist.number|add:2 %}
-			{% if page_number == restlist.number %}
+			{% if page_number == foodlist.number %}
 			<li class="page-item active" aria-current="page">
 				<a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
 			</li>
@@ -126,7 +130,7 @@
 		{% endif %}
 		{% endfor %}
 		<!-- 다음페이지 -->
-		{% if rest.has_next %}
+		{% if foodlist.has_next %}
 		<li class="page-item">
 			<a class="page-link" href="?page={{ foodlist.next_page_number }}">다음</a>
 		</li>
@@ -139,4 +143,10 @@
 
 	<script src="script/jquery-3.5.1.min.js"></script>
 	<script src="script/custom.js"></script>
-</body></html>
+</body>
+<script>
+	const back = () => {
+		window.history.back();
+	}
+</script>
+</html>
